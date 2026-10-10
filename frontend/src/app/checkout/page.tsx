@@ -20,6 +20,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import { Address, PaymentMethod, Order } from '../../types/index';
 import { Button } from '../../components/ui/Button';
+import { Modal } from '../../components/ui/Modal';
+import { PaymentGatewayModal } from '../../components/checkout/PaymentGatewayModal';
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -32,6 +34,21 @@ export default function CheckoutPage() {
   const [selectedAddressId, setSelectedAddressId] = useState<string>('');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('COD');
   const [isPlacingOrder, setIsPlacingOrder] = useState<boolean>(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState<boolean>(false);
+  const [addAddressModalOpen, setAddAddressModalOpen] = useState<boolean>(false);
+
+  // Address inputs
+  const [addrName, setAddrName] = useState('');
+  const [addrPhone, setAddrPhone] = useState('');
+  const [addrHouse, setAddrHouse] = useState('');
+  const [addrStreet, setAddrStreet] = useState('');
+  const [addrCity, setAddrCity] = useState('Gurugram');
+  const [addrPincode, setAddrPincode] = useState('122002');
+  const [pendingOrderNumber, setPendingOrderNumber] = useState('BER-2026-78412');
+
+  useEffect(() => {
+    setPendingOrderNumber(`BER-2026-${Math.floor(10000 + Math.random() * 90000)}`);
+  }, []);
 
   // COD Rule: ₹699 to ₹4,999 inclusive
   const isCodEligible = totalAmount >= 699 && totalAmount <= 4999;
@@ -102,8 +119,6 @@ export default function CheckoutPage() {
       return;
     }
 
-    const chosenAddress = addresses.find((a) => a.id === selectedAddressId) || addresses[0];
-
     // Backend validation check for COD
     if (paymentMethod === 'COD' && !isCodEligible) {
       showToast(
@@ -114,6 +129,17 @@ export default function CheckoutPage() {
       return;
     }
 
+    // If online method, open PaymentGatewayModal
+    if (paymentMethod === 'PAYTM' || paymentMethod === 'GPAY') {
+      setPaymentModalOpen(true);
+      return;
+    }
+
+    finalizeOrder('COD');
+  };
+
+  const finalizeOrder = async (confirmedMethod: PaymentMethod) => {
+    const chosenAddress = addresses.find((a) => a.id === selectedAddressId) || addresses[0];
     setIsPlacingOrder(true);
 
     try {
@@ -508,6 +534,128 @@ export default function CheckoutPage() {
           </p>
         </div>
       </div>
+
+      {/* Payment Gateway Modal for Online Methods */}
+      <PaymentGatewayModal
+        isOpen={paymentModalOpen}
+        method={paymentMethod}
+        amount={totalAmount}
+        orderNumber={pendingOrderNumber}
+        onSuccess={() => {
+          setPaymentModalOpen(false);
+          finalizeOrder(paymentMethod);
+        }}
+        onFailure={(reason) => {
+          showToast('Payment Unsuccessful', reason, 'error');
+        }}
+        onClose={() => setPaymentModalOpen(false)}
+      />
+
+      {/* Quick Add Address Modal */}
+      <Modal
+        isOpen={addAddressModalOpen}
+        onClose={() => setAddAddressModalOpen(false)}
+        title="Add Delivery Address"
+        maxWidth="md"
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const newAddr: Address = {
+              id: `addr-${Date.now()}`,
+              userId: user?.id || 'usr-demo-01',
+              name: addrName || user?.name || 'Customer',
+              phone: addrPhone || user?.phone || '+91 98765 43210',
+              houseFlat: addrHouse,
+              street: addrStreet,
+              area: 'Central',
+              city: addrCity,
+              state: 'Haryana',
+              pincode: addrPincode,
+              isDefault: true,
+              latitude: 28.4900,
+              longitude: 77.0900,
+            };
+            const updated = [newAddr, ...addresses.map((a) => ({ ...a, isDefault: false }))];
+            setAddresses(updated);
+            setSelectedAddressId(newAddr.id);
+            localStorage.setItem('berlin_saved_addresses', JSON.stringify(updated));
+            setAddAddressModalOpen(false);
+            showToast('Address Saved', 'Selected for delivery', 'success');
+          }}
+          className="space-y-3"
+        >
+          <div>
+            <label className="text-[11px] font-bold text-zinc-400 uppercase block mb-1">Full Name</label>
+            <input
+              type="text"
+              required
+              value={addrName}
+              onChange={(e) => setAddrName(e.target.value)}
+              placeholder="Max Keller"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+            />
+          </div>
+          <div>
+            <label className="text-[11px] font-bold text-zinc-400 uppercase block mb-1">Phone</label>
+            <input
+              type="tel"
+              required
+              value={addrPhone}
+              onChange={(e) => setAddrPhone(e.target.value)}
+              placeholder="+91 98765 43210"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+            />
+          </div>
+          <div>
+            <label className="text-[11px] font-bold text-zinc-400 uppercase block mb-1">Flat / House</label>
+            <input
+              type="text"
+              required
+              value={addrHouse}
+              onChange={(e) => setAddrHouse(e.target.value)}
+              placeholder="Flat 402, Skyline Towers"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+            />
+          </div>
+          <div>
+            <label className="text-[11px] font-bold text-zinc-400 uppercase block mb-1">Street</label>
+            <input
+              type="text"
+              required
+              value={addrStreet}
+              onChange={(e) => setAddrStreet(e.target.value)}
+              placeholder="DLF Cyber City Road, Sector 29"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-[11px] font-bold text-zinc-400 uppercase block mb-1">City</label>
+              <input
+                type="text"
+                required
+                value={addrCity}
+                onChange={(e) => setAddrCity(e.target.value)}
+                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+              />
+            </div>
+            <div>
+              <label className="text-[11px] font-bold text-zinc-400 uppercase block mb-1">Pincode</label>
+              <input
+                type="text"
+                required
+                value={addrPincode}
+                onChange={(e) => setAddrPincode(e.target.value)}
+                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+              />
+            </div>
+          </div>
+          <Button variant="primary" size="lg" type="submit" className="w-full mt-2">
+            Save & Deliver Here
+          </Button>
+        </form>
+      </Modal>
     </div>
   );
 }
