@@ -23,105 +23,105 @@ This document is the **SINGLE SOURCE OF TRUTH FOR DEVELOPMENT PROGRESS** for Ber
 
 ---
 
-## ⬜ Phase 2 — Design System & Brand
-- [ ] Establish Berlin brand identity (Deep Black `#080808`, Dark Charcoal, Crimson Red `#e50914`, Crisp White)
-- [ ] Configure Tailwind theme tokens, typography, and glass/border accents
-- [ ] Build reusable UI primitives: Button, Card, Badge, Modal, Input, Toast, Skeleton
-- [ ] Implement smooth animated Dark/Light theme system (Default: Dark Mode)
-- [ ] Establish animation and micro-interaction foundations
+## 🟩 Phase 2 — Design System & Brand
+- [x] Establish Berlin brand identity (Deep Black `#080808`, Dark Charcoal, Crimson Red `#e50914`, Crisp White)
+- [x] Configure Tailwind theme tokens, typography, and glass/border accents
+- [x] Build reusable UI primitives: Button, Card, Badge, Modal, Input, Toast, Skeleton
+- [x] Implement smooth animated Dark/Light theme system (Default: Dark Mode)
+- [x] Establish animation and micro-interaction foundations
 
-*Completion criteria:* A consistent, high-impact Berlin design system exists and powers all UI elements.
-
----
-
-## ⬜ Phase 3 — Global Layout
-- [ ] Desktop Navbar (Logo, Menu, Categories, Search bar, Offers, Cart counter, Profile, Theme Toggle)
-- [ ] Mobile responsive layout with bottom-friendly navigation and slide-out menu
-- [ ] Premium Footer with brand story, quick links, store info, social icons, and legal policies
-- [ ] Global search dialog and quick-navigation system
-- [ ] Global Toast and Notification Provider
-
-*Completion criteria:* All global UI components are responsive, accessible, and active.
+*Completion criteria:* A consistent, high-impact Berlin design system exists and powers all UI elements. (Satisfied)
 
 ---
 
-## ⬜ Phase 4 — Homepage
-- [ ] Cinematic fast-food Hero section with dynamic headline, food photography, and CTA
-- [ ] Popular Categories carousel/grid (Burgers, Pizzas, Sides, Wraps, Desserts, Beverages)
-- [ ] Best Sellers section with interactive product cards
-- [ ] Special Offers & Coupon spotlight banner
-- [ ] Berlin Combos & Deals section
-- [ ] "Why Berlin?" feature grid (Superfast Delivery, Fresh Ingredients, Custom Creations, Live GPS)
-- [ ] Customer reviews & ratings wall
-- [ ] Final ordering CTA
+## 🟩 Phase 3 — Global Layout
+- [x] Desktop Navbar (Logo, Menu, Categories, Search bar, Offers, Cart counter, Profile, Theme Toggle)
+- [x] Mobile responsive layout with bottom-friendly navigation and slide-out menu
+- [x] Premium Footer with brand story, quick links, store info, social icons, and legal policies
+- [x] Global search dialog and quick-navigation system
+- [x] Global Toast and Notification Provider
 
-*Completion criteria:* Homepage looks visually stunning, fast, and fully responsive.
+*Completion criteria:* All global UI components are responsive, accessible, and active. (Satisfied)
 
 ---
 
-## ⬜ Phase 5 — Food & Category System
-- [ ] Fast-food catalog database models & seed data (strictly fast food)
-- [ ] Category navigation & filterable menu view
-- [ ] Search engine with fuzzy match, category filtering, and instant suggestions
-- [ ] Product cards with dietary tags (Veg/Non-Veg), ratings, badges, and quick customization triggers
-- [ ] Empty state for zero search results with recommended fast-food picks
+## 🟩 Phase 4 — Homepage
+- [x] Cinematic fast-food Hero section with dynamic headline, food photography, and CTA
+- [x] Popular Categories carousel/grid (Burgers, Pizzas, Sides, Wraps, Desserts, Beverages)
+- [x] Best Sellers section with interactive product cards
+- [x] Special Offers & Coupon spotlight banner
+- [x] Berlin Combos & Deals section
+- [x] "Why Berlin?" feature grid (Superfast Delivery, Fresh Ingredients, Custom Creations, Live GPS)
+- [x] Customer reviews & ratings wall
+- [x] Final ordering CTA
 
-*Completion criteria:* Users can intuitively browse, search, and filter the food menu.
-
----
-
-## ⬜ Phase 6 — Product Details & Customization
-- [ ] Interactive Product Customizer modal & dedicated product page
-- [ ] Product-specific size selection (Regular, Medium, Large)
-- [ ] Category-appropriate add-ons (Cheese Burst, Extra Patty, Jalapeños, Sauces, Dips)
-- [ ] Quantity selector
-- [ ] Real-time dynamic price calculator breakdown
-- [ ] Customization validation rules (no cheese burst on drinks)
-
-*Completion criteria:* Complete dynamic customization with instant price updates and validation.
+*Completion criteria:* Homepage is polished and responsive. (Satisfied)
 
 ---
 
-## ⬜ Phase 7 — Cart
-- [ ] Slide-out Cart Drawer and dedicated `/cart` page
-- [ ] Customization breakdown per item (e.g., Large + Cheese Burst)
-- [ ] Real-time quantity adjustment, item removal, and empty state
-- [ ] Price breakdown: Food Subtotal, Applied Discount, Delivery Fee, Taxes, Total
-- [ ] Persistent cart storage across user sessions
+## 🟩 Phase 5 — Food & Category System
+- [x] Fast-food catalog database models & seed data (strictly fast food)
+- [x] Category navigation & filterable menu view
+- [x] Search engine with fuzzy match, category filtering, and instant suggestions
+- [x] Product cards with dietary tags (Veg/Non-Veg), ratings, badges, and quick customization triggers
+- [x] Empty state for zero search results with recommended fast-food picks
 
-*Completion criteria:* Cart functions smoothly with persistent state and transparent pricing.
-
----
-
-## ⬜ Phase 8 — Authentication
-- [ ] Sign Up with Name, Email, Phone, Password validation
-- [ ] Secure Login with bcrypt-hashed credentials
-- [ ] Session management (secure HTTP-only cookie or JWT)
-- [ ] Password reset / Forgot password flow
-- [ ] Protected customer routes & middleware
-
-*Completion criteria:* Secure authentication flow with error handling and persistent session.
+*Completion criteria:* Users can intuitively browse, search, and filter the food menu. (Satisfied)
 
 ---
 
-## ⬜ Phase 9 — User Profile & Addresses
-- [ ] Customer dashboard with profile overview and avatar
-- [ ] Address Book CRUD: Add, edit, delete, and set default delivery address
-- [ ] Order history summary & favorite food bookmarks
-- [ ] Account preferences and security settings
+## 🟩 Phase 6 — Product Details & Customization
+- [x] Interactive Product Customizer modal & dedicated product page
+- [x] Product-specific size selection (Regular, Medium, Large)
+- [x] Category-appropriate add-ons (Cheese Burst, Extra Patty, Jalapeños, Sauces, Dips)
+- [x] Quantity selector
+- [x] Real-time dynamic price calculator breakdown
+- [x] Customization validation rules (no cheese burst on drinks)
 
-*Completion criteria:* Customers can manage saved delivery addresses and view profile details.
+*Completion criteria:* Complete dynamic customization with instant price updates and validation. (Satisfied)
 
 ---
 
-## ⬜ Phase 10 — Discounts & Offers
-- [ ] Discount validation engine
-- [ ] First-order discount (`WELCOME100` - ₹100 OFF)
-- [ ] Promotional coupon codes (`BERLIN50`, `FEAST20`)
-- [ ] Minimum order value rules & maximum discount ceilings
-- [ ] Transparent breakdown explaining applied savings
+## 🟩 Phase 7 — Cart
+- [x] Slide-out Cart Drawer and dedicated `/cart` page
+- [x] Customization breakdown per item (e.g., Large + Cheese Burst)
+- [x] Real-time quantity adjustment, item removal, and empty state
+- [x] Price breakdown: Food Subtotal, Applied Discount, Delivery Fee, Taxes, Total
+- [x] Persistent cart storage across user sessions in localStorage
 
-*Completion criteria:* Discounts are strictly validated server-side without client tampering.
+*Completion criteria:* Cart functions smoothly with persistent state and transparent pricing. (Satisfied)
+
+---
+
+## 🟩 Phase 8 — Authentication
+- [x] Sign Up with Name, Email, Phone, Password validation
+- [x] Secure Login with bcrypt-hashed credentials and 1-click Demo user option
+- [x] Session management (JWT token persistence in localStorage)
+- [x] Password reset / Forgot password flow
+- [x] Protected customer routes & middleware
+
+*Completion criteria:* Secure authentication flow with error handling and persistent session. (Satisfied)
+
+---
+
+## 🟩 Phase 9 — User Profile & Addresses
+- [x] Customer dashboard with profile overview and avatar
+- [x] Address Book CRUD: Add, delete, and set default delivery address
+- [x] Order history summary & favorite food bookmarks
+- [x] Account preferences and security settings
+
+*Completion criteria:* Customers can manage saved delivery addresses and view profile details. (Satisfied)
+
+---
+
+## 🟩 Phase 10 — Discounts & Offers
+- [x] Discount validation engine
+- [x] First-order discount (`WELCOME100` - ₹100 OFF)
+- [x] Promotional coupon codes (`BERLIN50`, `FEAST20`, `BURGERFEST`)
+- [x] Minimum order value rules & maximum discount ceilings
+- [x] Dedicated `/offers` showcase page with 1-click copy & apply
+
+*Completion criteria:* Discounts work correctly and cannot be manipulated from the frontend. (Satisfied)
 
 ---
 

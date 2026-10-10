@@ -17,13 +17,13 @@ This document serves as the persistent memory, architectural record, and operati
 ---
 
 ## 2. CURRENT DEVELOPMENT STATE
-- **Current Phase:** Phase 1 — Project Foundation (COMPLETED 🟩)
-- **Current Sub-phase:** Phase 1 Completed & Verified; Ready for Phase 2
-- **Last Completed Phase:** Phase 1 — Project Foundation
-- **Next Phase:** Phase 2 — Design System & Brand
-- **Current Task:** Ready to begin Phase 2 — Design System & Brand (awaiting user prompt).
+- **Current Phase:** Phase 10 — Discounts & Offers (COMPLETED 🟩)
+- **Current Sub-phase:** Phases 1 through 10 Complete & Verified (Ready for Phase 11 — Checkout)
+- **Last Completed Phase:** Phase 10 — Discounts & Offers
+- **Next Phase:** Phase 11 — Checkout
+- **Current Task:** Full-stack food ordering platform foundation, design system, layout, homepage, catalog, customization modal, cart system, authentication, user profile/addresses, and discount engine completed.
 - **Current Blockers:** None
-- **Last Major Change:** Built and verified complete foundations for `frontend/` (Next.js 16 App Router, TypeScript, Tailwind) and `backend/` (Express REST API with full data models, COD validation, cancellation window, driver tracking). All builds verified cleanly with 0 errors. Strict root folder rule maintained.
+- **Last Major Change:** Successfully implemented and tested Phases 1–10. Production builds passing cleanly with zero errors. All routes accessible and functioning.
 
 ---
 
@@ -111,13 +111,16 @@ Berlin/
 ---
 
 ## 8. COMPLETED WORK
-- **Phase 1 — Project Foundation (🟩 COMPLETED):** 
-  - Strictly enforced root repository structure containing ONLY: `frontend/`, `backend/`, `README.md`, `ROADMAP.md`, `BRAIN.md`, `.gitignore`.
-  - Initialized Git workflow, branch `main`, and connected remote `https://github.com/lohithpahuja03/Berlin.git`.
-  - Bootstrapped Next.js 16 App Router TypeScript frontend in `frontend/` with Tailwind CSS, Lucide icons, and tested production build.
-  - Bootstrapped Node.js / Express TypeScript backend in `backend/` with complete domain types, in-memory relational store, seed fast-food catalog, business rules (COD ₹699-₹4,999, 5-minute cancellation window), driver simulation engine, and REST endpoints.
-  - Created persistent project tracking system: `BRAIN.md`, `ROADMAP.md`, and comprehensive `README.md`.
-  - Verified 0 compile or type errors across both frontend and backend.
+- **Phase 1 — Project Foundation (🟩 COMPLETED):** Strictly enforced root structure (`frontend/`, `backend/`, `README.md`, `ROADMAP.md`, `BRAIN.md`, `.gitignore`), Git remote connected, TypeScript configurations set.
+- **Phase 2 — Design System & Brand (🟩 COMPLETED):** Berlin Deep Black & Crimson Red design tokens, CSS variables, typography, button variants, badges, modal, toast provider, and dark/light mode toggle.
+- **Phase 3 — Global Layout (🟩 COMPLETED):** Sticky responsive Navbar with live bag badge & search trigger, mobile navigation drawer, comprehensive Footer with kitchen hours & legal policies, global Search modal.
+- **Phase 4 — Homepage (🟩 COMPLETED):** Cinematic Hero section, 8-category visual grid, best-sellers cards, special offers spotlight banner, Berlin feast combos, "Why Berlin" guarantee pillars, and customer reviews wall.
+- **Phase 5 — Food & Category System (🟩 COMPLETED):** Dedicated `/menu` page with category filter pills, dietary filters (All, Veg, Non-Veg), sorting options, and zero-match empty state.
+- **Phase 6 — Product Details & Customization (🟩 COMPLETED):** Interactive `ProductCustomizerModal` with product-specific sizes (Regular, Double, Monster / Small, Medium, Large), category-appropriate add-ons (Cheese Burst, Extra Patty, Dips), and real-time dynamic pricing breakdown.
+- **Phase 7 — Cart (🟩 COMPLETED):** Persistent `CartContext` in localStorage, slide-out `CartDrawer`, dedicated `/cart` page with item breakdown, quantity adjuster, and transparent bill calculation.
+- **Phase 8 — Authentication (🟩 COMPLETED):** `AuthContext`, modal with Sign In & Sign Up tabs, 1-click demo login (`demo@berlin.food` / `Berlin123!`), JWT token persistence, and profile sync.
+- **Phase 9 — User Profile & Addresses (🟩 COMPLETED):** Customer Profile dashboard (`/profile`), Address CRUD (add, delete, default address toggle), and past order history with 1-click Reorder.
+- **Phase 10 — Discounts & Offers (🟩 COMPLETED):** Dedicated `/offers` page with promo coupons (`WELCOME100`, `BERLIN50`, `FEAST20`, `BURGERFEST`), 1-click copy & apply, and minimum spend validation.
 
 ---
 
